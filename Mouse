@@ -1,0 +1,15 @@
+Options.rpy
+
+
+define config.mouse = { }
+define config.mouse['default'] = [ ( "gui/handpointer.png", 0, 0) ]
+define config.mouse['spin' ] = [
+    ( "gui/handpointer.png", 7, 7 ),
+    ( "gui/handpointer.png", 7, 7 ),
+    ( "gui/handpointer.png", 7, 7 ),
+    ( "gui/handpointer.png", 7, 7 ),
+    ( "gui/handpointer.png", 7, 7 ),
+    ( "gui/handpointer.png", 7, 7 ),
+    ( "gui/handpointer.png", 7, 7 ),
+    ( "gui/handpointer.png", 7, 7 ),
+]
