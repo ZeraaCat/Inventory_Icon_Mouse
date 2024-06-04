@@ -1,1 +1,50 @@
+Screens: 
+
+Before the inventory screen -- 
+
+init python:
+    # Set the initial state of achievement popup to not shown
+    persistent.achievement_popup_shown = False
+
+# Function to mark achievement popup as shown
+init python:
+    def set_achievement_popup_shown():
+        # Set the persistent variable to indicate that the popup has been shown
+        persistent.achievement_popup_shown = True
+
+# Function to reset achievement popup to not shown
+init python:
+    def reset_achievement_popup_shown():
+        # Reset the persistent variable to indicate that the popup has not been shown
+        persistent.achievement_popup_shown = False
+
+# Function to get the image for a specific achievement
+init python:
+    def get_achievement_image(achievement_name):
+        # Map achievement names to corresponding image paths
+        if achievement_name == 'croissant':
+            return "system/save_bg.png"
+        elif achievement_name == 'drink':
+            return "system/settings_bg.png"
+        elif achievement_name == 'mushroom':
+            return "menubutton/btn_Archive_hover.png"
+        else:
+            return ""  # Return an empty string if no matching image is found
+
+
+At the end of the inventory screen 
+
+ # Check if the achievement popup has not been shown previously
+    if not persistent.achievement_popup_shown:
+        # Define a vertical box (vbox) to contain the achievement popups
+        vbox:
+            # Apply a style group to the vbox for consistent styling
+            style_group "achievement_popup"
+            
+            # Iterate over each achievement
+            for ach in ['croissant', 'drink', 'mushroom']:
+                # Check if the player has unlocked the current achievement
+                if achievement.has(ach):
+                    # Create an image button for the achievement popup
+                    imagebutton action Function(set_achievement_popup_shown) idle get_achievement_image(ach) xysize (1000, 1000)
 
